@@ -1,0 +1,16 @@
+---
+- hosts: local
+  vars:
+    username: webmaster
+    userpassword: $6$TDArDjR6$BQc8.pBdtwzqvQPTDyVXu5FxU/4sLY0a/b5jv2RSQWDgTlcPGlogrmI.AOPgT1kXWTyKpvUklAJwq4.5P8wWP.
+    sitename: example.com
+    dbname: app_db
+    dbusername: app_user
+    dbuserpassword: app_user_password
+  roles:
+    - common
+    - user
+    - nginx
+    - php
+    - composer
+    - mariadb

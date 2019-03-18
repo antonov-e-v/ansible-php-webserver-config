@@ -1,0 +1,22 @@
+---
+- name: Install MariaDB
+  apt:
+    name:
+    - mariadb-server
+    - python-mysqldb
+    update_cache: yes
+    state: present
+- name: Create MySQL database
+  mysql_db:
+    name: "{{ dbname }}"
+    state: present
+- name: Create MySQL user
+  # if you are using MySQL 5.7 https://stackoverflow.com/questions/37533685/how-to-install-mysql-5-7-using-ansible-and-vagrant
+  #- name: Set MySQL root password
+  #  command: /usr/bin/mysql -e "alter user 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourrootpassword';"
+  mysql_user:
+    name: "{{ dbusername }}"
+    state: present
+    password: "{{ dbuserpassword }}"
+    priv: "{{ dbname }}.*:ALL"
+  notify: restart mariadb

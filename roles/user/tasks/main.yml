@@ -1,0 +1,7 @@
+---
+- name: Create a webmaster user
+  user:
+    name: "{{ username }}"
+    password: "{{ userpassword }}"
+    shell: /bin/bash
+    state: present

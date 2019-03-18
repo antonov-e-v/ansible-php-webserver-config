@@ -1,0 +1,9 @@
+---
+- name: Install common packages
+  apt:
+    name:
+    - git
+    - fail2ban
+    - ufw
+    update_cache: yes
+    state: present

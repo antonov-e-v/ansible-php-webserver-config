@@ -1,0 +1,19 @@
+---
+- name: Install nginx
+  apt:
+    name:
+    - nginx
+    update_cache: yes
+    state: present
+
+- name: Set PHP user, group, listen.owner, listen.group
+  lineinfile:
+    dest: /etc/nginx/nginx.conf
+    regexp: "^user "
+    line: "user {{ username }};"
+
+- name: configure nginx
+  template: src=default.conf.j2 dest=/etc/nginx/sites-available/default
+  tags: nginx
+  notify:
+    - restart nginx
