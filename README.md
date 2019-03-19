@@ -21,5 +21,6 @@ It will create:
 It will configure:
 - Nginx config and site template for site `example.com` (don't forget to change it in `vars` parameters)
 - Php-fpm config
+- Ufw (open 22, 80, 443 ports, limiting 22 port)
 
 This configuration successfully tested with Laravel 5.8
